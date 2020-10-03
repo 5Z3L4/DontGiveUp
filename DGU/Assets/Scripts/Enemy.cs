@@ -73,16 +73,21 @@ public class Enemy : MonoBehaviour
 
     private void Attack()
     {
+        Collider2D[] enemiesToDamage = Physics2D.OverlapBoxAll(attackPos.position, new Vector2(attackRangeX, attackRangeY), 0, whatIsEnemies);
+        for (int i = 0; i < enemiesToDamage.Length; i++)
+        {
+            isPlayerDead = enemiesToDamage[i].GetComponent<PlayerStats>().isDead;
+        }
+
         if (timeBtwAttack <= 0)
         {
 
             if (currentDistance <= stopDistance && !isPlayerDead)
             {
                 timeBtwAttack = startTimeBtwAttack;
-                Collider2D[] enemiesToDamage = Physics2D.OverlapBoxAll(attackPos.position, new Vector2(attackRangeX, attackRangeY),0, whatIsEnemies);
+                
                 for (int i = 0; i < enemiesToDamage.Length; i++)
                 {
-                    isPlayerDead = enemiesToDamage[i].GetComponent<PlayerStats>().isDead;
                     if (!isPlayerDead)
                     {
                         enemiesToDamage[i].GetComponent<PlayerStats>().healthPoints -= 1;
