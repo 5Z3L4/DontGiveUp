@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumpingLow;
 
     public Rigidbody2D playerRB;
+
+    public PlayerStats playerStats;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,8 +41,16 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
-        Move(horizontalAxis, playerRB, moveSpeed);
-        Jump();
+        if(!playerStats.isDead)
+        {
+            Move(horizontalAxis, playerRB, moveSpeed);
+            Jump();
+        }
+        else
+        {
+            playerRB.velocity = Vector2.zero;
+        }
+        
     }
 
     private void Jump()
