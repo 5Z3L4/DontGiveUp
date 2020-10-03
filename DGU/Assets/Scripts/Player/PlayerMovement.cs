@@ -46,6 +46,10 @@ public class PlayerMovement : MonoBehaviour
             Move(horizontalAxis, playerRB, moveSpeed);
             Jump();
         }
+        else
+        {
+            playerRB.velocity = Vector2.zero;
+        }
         
     }
 

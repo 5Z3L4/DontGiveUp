@@ -11,6 +11,7 @@ public class PlayerAttack : MonoBehaviour
     public float attackRange;
     public float damage;
     private Animator anim;
+    public PlayerStats playerStats;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,20 @@ public class PlayerAttack : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        if(!playerStats.isDead)
+        {
+            Attack();
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPos.position, attackRange);
+    }
+
+    private void Attack()
     {
         if (timeBtwAttack <= 0)
         {
@@ -39,12 +54,6 @@ public class PlayerAttack : MonoBehaviour
             timeBtwAttack -= Time.deltaTime;
         }
 
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPos.position, attackRange);
     }
 
 }
