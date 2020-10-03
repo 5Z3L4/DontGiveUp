@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     public float attackRangeX;
     public float attackRangeY;
     bool isPlayerDead = false;
+    public Animator anim;
 
     private void Awake()
     {
@@ -35,6 +36,7 @@ public class Enemy : MonoBehaviour
     {
         enemyHP -= damage;
         Debug.Log(enemyHP);
+        anim.Play("SnakeHit");
         Die();
     }
 
@@ -43,7 +45,7 @@ public class Enemy : MonoBehaviour
         if (enemyHP <=0)
         {
             Debug.Log("EnemyDied");
-            Destroy(gameObject);
+            Destroy(gameObject, 0.3f);
         }
     }
     public void Move()
@@ -73,17 +75,21 @@ public class Enemy : MonoBehaviour
     {
         if (timeBtwAttack <= 0)
         {
-            if (currentDistance <= stopDistance)
+
+            if (currentDistance <= stopDistance && !isPlayerDead)
             {
                 timeBtwAttack = startTimeBtwAttack;
                 Collider2D[] enemiesToDamage = Physics2D.OverlapBoxAll(attackPos.position, new Vector2(attackRangeX, attackRangeY),0, whatIsEnemies);
                 for (int i = 0; i < enemiesToDamage.Length; i++)
                 {
-                    enemiesToDamage[i].GetComponent<PlayerStats>().healthPoints -= 1;
                     isPlayerDead = enemiesToDamage[i].GetComponent<PlayerStats>().isDead;
-                    Debug.Log(enemiesToDamage[i].GetComponent<PlayerStats>().healthPoints);
+                    if (!isPlayerDead)
+                    {
+                        enemiesToDamage[i].GetComponent<PlayerStats>().healthPoints -= 1;
+                        Debug.Log(enemiesToDamage[i].GetComponent<PlayerStats>().healthPoints);
+                        anim.Play("SnakeAttack");
+                    }
                 }
-                //anim.Play("PigAttack");
             }
         }
         else
