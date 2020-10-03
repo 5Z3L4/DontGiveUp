@@ -4,13 +4,30 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public int healthPoints = 3;
+    public int maxHealth = 1;
+    public int healthPoints = 1;
+    private Animator anim;
+    public bool isDead = false;
 
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
     private void Update()
     {
-        if (healthPoints <=0)
+        if (healthPoints <=0 && !isDead)
         {
-            Destroy(gameObject);
+            isDead = true;
+            anim.Play("PlayerDeath");
+        }
+        if(isDead)
+        {
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                anim.Play("PlayerResurection");
+                isDead = false;
+                healthPoints = maxHealth;
+            }
         }
     }
 }

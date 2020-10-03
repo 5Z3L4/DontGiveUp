@@ -10,11 +10,12 @@ public class PlayerAttack : MonoBehaviour
     public LayerMask whatIsEnemies;
     public float attackRange;
     public float damage;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -25,7 +26,7 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 timeBtwAttack = startTimeBtwAttack;
-                Debug.Log("Attack");
+                anim.Play("PlayerAttack");
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
                 for (int i = 0; i < enemiesToDamage.Length; i++)
                 {

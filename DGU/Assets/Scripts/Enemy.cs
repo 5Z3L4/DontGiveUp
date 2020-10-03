@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     public LayerMask whatIsEnemies;
     public float attackRangeX;
     public float attackRangeY;
+    bool isPlayerDead = false;
 
     private void Awake()
     {
@@ -47,7 +48,7 @@ public class Enemy : MonoBehaviour
     }
     public void Move()
     {
-        if (currentDistance >= stopDistance)
+        if (currentDistance >= stopDistance || isPlayerDead)
         {
             transform.Translate(Vector2.right * speed * Time.deltaTime);
             RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, 2f);
@@ -79,6 +80,7 @@ public class Enemy : MonoBehaviour
                 for (int i = 0; i < enemiesToDamage.Length; i++)
                 {
                     enemiesToDamage[i].GetComponent<PlayerStats>().healthPoints -= 1;
+                    isPlayerDead = enemiesToDamage[i].GetComponent<PlayerStats>().isDead;
                     Debug.Log(enemiesToDamage[i].GetComponent<PlayerStats>().healthPoints);
                 }
                 //anim.Play("PigAttack");

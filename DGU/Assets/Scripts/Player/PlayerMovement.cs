@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalAxis;
     public float moveSpeed;
     public bool facingRight = true;
+    private Animator anim;
 
     //jump variables
     public Transform groundCheck;
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -62,6 +64,15 @@ public class PlayerMovement : MonoBehaviour
         horizontalAxis = Input.GetAxisRaw("Horizontal");
         isJumping = Input.GetButtonDown("Jump");
         isJumpingLow = Input.GetButton("Jump");
+
+        if (horizontalAxis !=0)
+        {
+            anim.SetBool("isRunning", true);
+        }
+        else
+        {
+            anim.SetBool("isRunning", false);
+        }
     }
 
     public void Move(float horizontal, Rigidbody2D rb, float speed)
