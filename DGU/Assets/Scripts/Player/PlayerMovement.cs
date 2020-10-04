@@ -39,13 +39,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckAxis();   
-    }
-
-    private void FixedUpdate()
-    {
+        CheckAxis();
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
-        if(!playerStats.isDead && horizontalAxis!=0)
+        if (!playerStats.isDead)
         {
             Move(horizontalAxis, playerRB, moveSpeed);
             Jump();
@@ -54,7 +50,6 @@ public class PlayerMovement : MonoBehaviour
         {
             playerRB.velocity = Vector2.zero;
         }
-        
     }
 
     private void Jump()
