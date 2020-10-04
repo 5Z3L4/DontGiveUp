@@ -106,4 +106,6 @@ public class PlayerMovement : MonoBehaviour
         transform.localScale = scaler;
     }
 
+   
+
 }
