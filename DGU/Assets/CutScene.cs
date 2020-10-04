@@ -7,18 +7,27 @@ public class CutScene : MonoBehaviour
     public PlayerMovement playerMovement;
     public PlayerAttack playerAttack;
 
+    public Dialogue dialogue;
+    private bool isDialogueStarted = false;
+
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
         playerAttack = GetComponent<PlayerAttack>();
+
     }
 
     public void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetMouseButtonDown(0) && !isDialogueStarted)
         {
-            playerAttack.enabled = true;
-            playerMovement.enabled = true;
+            TriggerDialogue();
+            isDialogueStarted = true;
         }
+    }
+
+    public void TriggerDialogue()
+    {
+        FindObjectOfType<DialogueController>().StartDialogue(dialogue);
     }
 }

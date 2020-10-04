@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    float enemyHP = 3;
+    public float enemyHP = 3;
     public float speed;
     private bool movingRight = true;
     public Transform groundDetection;
