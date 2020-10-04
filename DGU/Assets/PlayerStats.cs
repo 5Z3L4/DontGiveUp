@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    [SerializeField]
+    Transform spawnposition;
+
     public int maxHealth = 1;
     public int healthPoints = 1;
     private Animator anim;
@@ -36,6 +39,7 @@ public class PlayerStats : MonoBehaviour
         if (collision.CompareTag("Spieks"))
         {
             healthPoints = 0;
+            transform.position = spawnposition.position;
         }
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class DogEnemy : MonoBehaviour
 {
+    
     public bool facingRight = false;
     public float moveSpeed = 8;
 
