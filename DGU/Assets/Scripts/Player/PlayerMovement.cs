@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(float horizontal, Rigidbody2D rb, float speed)
     {
-        if(!isJumping && !isJumpingLow && horizontalAxis !=0)
+        if(!isJumping && !isJumpingLow && horizontalAxis !=0 && !PauseMenu.gamePaused)
         {
             SoundManager.PlaySound(SoundManager.Sound.PlayerMove, groundCheck.transform.position);
         }
@@ -100,10 +100,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void Flip()
     {
-        facingRight = !facingRight;
-        Vector3 scaler = transform.localScale;
-        scaler.x *= -1;
-        transform.localScale = scaler;
+        if(!PauseMenu.gamePaused)
+        {
+            facingRight = !facingRight;
+            Vector3 scaler = transform.localScale;
+            scaler.x *= -1;
+            transform.localScale = scaler;
+        }
     }
 
    

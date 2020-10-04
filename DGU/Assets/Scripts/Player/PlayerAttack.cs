@@ -22,7 +22,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!playerStats.isDead)
+        if(!playerStats.isDead && !PauseMenu.gamePaused)
         {
             Attack();
         }
