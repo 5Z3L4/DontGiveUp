@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DogEnemy : MonoBehaviour
 {
-    public bool facingRight = true;
+    public bool facingRight = false;
     public float moveSpeed = 8;
 
     public float horizontal = 0;
@@ -58,7 +58,7 @@ public class DogEnemy : MonoBehaviour
         {
             
             rbx.velocity = new Vector2(horizontal * moveSpeed * Time.deltaTime, rbx.velocity.y);
-            if (horizontal > 0 && !facingRight || horizontal < 0 && facingRight)
+            if (horizontal > 0 && facingRight || horizontal < 0 && !facingRight)
             {
                 Flip();
             }
