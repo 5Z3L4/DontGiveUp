@@ -18,6 +18,7 @@ public class PlayerStats : MonoBehaviour
         if (healthPoints <=0 && !isDead)
         {
             isDead = true;
+            SoundManager.PlaySound(SoundManager.Sound.PlayerDie);
             anim.Play("PlayerDeath");
         }
         if(isDead)

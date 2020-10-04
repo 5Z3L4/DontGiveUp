@@ -25,6 +25,10 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D playerRB;
 
     public PlayerStats playerStats;
+    private void Awake()
+    {
+        SoundManager.Initialize();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -35,13 +39,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckAxis();   
-    }
-
-    private void FixedUpdate()
-    {
+        CheckAxis();
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
-        if(!playerStats.isDead)
+        if (!playerStats.isDead)
         {
             Move(horizontalAxis, playerRB, moveSpeed);
             Jump();
@@ -50,7 +50,6 @@ public class PlayerMovement : MonoBehaviour
         {
             playerRB.velocity = Vector2.zero;
         }
-        
     }
 
     private void Jump()
@@ -87,6 +86,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(float horizontal, Rigidbody2D rb, float speed)
     {
+        if(!isJumping && !isJumpingLow)
+        {
+            SoundManager.PlaySound(SoundManager.Sound.PlayerMove, groundCheck.transform.position);
+        }
+        
         rb.velocity = new Vector2(horizontal * speed * Time.deltaTime, rb.velocity.y);
         if (horizontal > 0 && !facingRight || horizontal < 0 && facingRight)
         {
