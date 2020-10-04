@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
     public void GetDamage(float damage)
     {
         enemyHP -= damage;
-        Debug.Log(enemyHP);
+        SoundManager.PlaySound(SoundManager.Sound.EnemyHit, attackPos.transform.position);
         anim.Play("SnakeHit");
         Die();
     }
@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour
     {
         if (enemyHP <=0)
         {
-            Debug.Log("EnemyDied");
+            SoundManager.PlaySound(SoundManager.Sound.EnemyDie, attackPos.transform.position);
             Destroy(gameObject, 0.3f);
         }
     }

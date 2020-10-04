@@ -42,7 +42,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 timeBtwAttack = startTimeBtwAttack;
                 anim.Play("PlayerAttack");
-                SoundManager.PlaySound(SoundManager.Sound.PlayerAttack);
+                SoundManager.PlaySound(SoundManager.Sound.PlayerAttack, attackPos.transform.position);
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
                 for (int i = 0; i < enemiesToDamage.Length; i++)
                 {

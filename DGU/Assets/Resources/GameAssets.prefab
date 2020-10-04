@@ -46,11 +46,11 @@ MonoBehaviour:
   soundAudioClipArray:
   - sound: 1
     AudioClip: {fileID: 8300000, guid: 0e0d3d7342326a542927cd7aaa0c51b4, type: 3}
+  - sound: 2
+    AudioClip: {fileID: 8300000, guid: fb7f67c24c542b3478c0ae0aaf649434, type: 3}
   - sound: 0
-    AudioClip: {fileID: 0}
-  - sound: 0
-    AudioClip: {fileID: 0}
-  - sound: 0
-    AudioClip: {fileID: 0}
-  - sound: 0
-    AudioClip: {fileID: 0}
+    AudioClip: {fileID: 8300000, guid: 882d1a0a068b63748b6d351ba8f54bb9, type: 3}
+  - sound: 3
+    AudioClip: {fileID: 8300000, guid: 5e3997688b9baab45baaf49c93fefa1a, type: 3}
+  - sound: 4
+    AudioClip: {fileID: 8300000, guid: b81e750fbe755664981b5ff44d002525, type: 3}
