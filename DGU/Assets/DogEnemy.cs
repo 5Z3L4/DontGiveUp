@@ -23,11 +23,11 @@ public class DogEnemy : MonoBehaviour
     public float attackRange;
     public float damage;
     private bool isPlayerDead = false;
-    private float enemyHP = 2;
-
+    private float enemyHP = 4;
 
     bool isDamaged = false;
     float lastTimeDamaged = 0;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -136,6 +136,8 @@ public class DogEnemy : MonoBehaviour
     public void GetDamage(float damage)
     {
         enemyHP -= damage;
+        Debug.Log(enemyHP);
+        
         SoundManager.PlaySound(SoundManager.Sound.EnemyHit, attackPos.transform.position);
         anim.Play("DogEnemyHit");
         isDamaged = true;
@@ -151,4 +153,14 @@ public class DogEnemy : MonoBehaviour
             Destroy(gameObject, 0.3f);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Spieks"))
+        {
+            GetDamage(enemyHP);
+        }
+    }
+
+
 }

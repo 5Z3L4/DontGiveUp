@@ -31,4 +31,11 @@ public class PlayerStats : MonoBehaviour
             }
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Spieks"))
+        {
+            healthPoints = 0;
+        }
+    }
 }
