@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(float horizontal, Rigidbody2D rb, float speed)
     {
-        if(!isJumping && !isJumpingLow)
+        if(!isJumping && !isJumpingLow && horizontalAxis !=0)
         {
             SoundManager.PlaySound(SoundManager.Sound.PlayerMove, groundCheck.transform.position);
         }
