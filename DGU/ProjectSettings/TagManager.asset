@@ -9,6 +9,9 @@ TagManager:
   - Spieks
   - DogEnemy
   - SceneManager
+  - Resp
+  - Level1
+  - Level2
   layers:
   - Default
   - TransparentFX

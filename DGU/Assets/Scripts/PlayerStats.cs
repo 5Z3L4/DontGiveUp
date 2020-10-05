@@ -38,6 +38,12 @@ public class PlayerStats : MonoBehaviour
             healthPoints = 0;
 
         }
+        if(collision.CompareTag("Resp"))
+        {
+            spawnposition = collision.transform;
+            GameObject.FindGameObjectWithTag("Level1").SetActive(false);
+            GameObject.FindGameObjectWithTag("Level2").SetActive(true);
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
