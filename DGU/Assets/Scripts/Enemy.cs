@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    float enemyHP = 3;
+    public float enemyMaxHP = 3;
+    public float enemyHP = 3;
     public float speed;
     private bool movingRight = true;
     public Transform groundDetection;
@@ -19,16 +20,29 @@ public class Enemy : MonoBehaviour
     public float attackRangeY;
     bool isPlayerDead = false;
     public Animator anim;
+    private Vector3 respawnPos;
+    public Vector3 deathPoint;
+    private PlayerStats playerStats;
+    float currentTime;
 
+    public bool shouldIRespawn = true;
+    private bool isDead = false;
     private void Awake()
     {
         target = GameObject.FindGameObjectWithTag("MiddleOfThePlayer").GetComponent<Transform>();
+        respawnPos = transform.position;
+        playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
     }
     // Update is called once per frame
     void Update()
     {
+        if(playerStats.isDead)
+        {
+            Respawn();
+        }
         Attack();
         Move();
+        Die();
         currentDistance = Mathf.Abs(Mathf.Abs(target.transform.position.x) - Mathf.Abs(transform.position.x));
     }
 
@@ -37,15 +51,26 @@ public class Enemy : MonoBehaviour
         enemyHP -= damage;
         SoundManager.PlaySound(SoundManager.Sound.EnemyHit, attackPos.transform.position);
         anim.Play("SnakeHit");
-        Die();
+        if (enemyHP <= 0)
+        {
+            currentTime = Time.time;
+            SoundManager.PlaySound(SoundManager.Sound.EnemyDie, attackPos.transform.position);
+        }
     }
 
     public void Die()
     {
         if (enemyHP <=0)
         {
-            SoundManager.PlaySound(SoundManager.Sound.EnemyDie, attackPos.transform.position);
-            Destroy(gameObject, 0.3f);
+            //Respawn();
+            //Destroy(gameObject, 0.3f);
+            isDead = true;
+            float deathTimer = 0.3f;
+            if(currentTime + deathTimer < Time.time)
+            {
+                transform.position = deathPoint;
+                PlayerStats.souls += 2;
+            }
         }
     }
     public void Move()
@@ -106,5 +131,15 @@ public class Enemy : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(attackPos.position, new Vector3(attackRangeX, attackRangeY, 1));
+    }
+
+    private void Respawn()
+    {
+        if(shouldIRespawn && isDead)
+        {
+            isDead = false;
+            transform.position = respawnPos;
+            enemyHP = enemyMaxHP;
+        } 
     }
 }

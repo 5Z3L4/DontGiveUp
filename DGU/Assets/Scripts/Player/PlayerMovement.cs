@@ -108,7 +108,15 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = scaler;
         }
     }
-
-   
+    
+    public void AddMoveSpeed()
+    {
+        moveSpeed += 10;
+    }
+    
+    public void AddJumpForce()
+    {
+        jumpForce += 1;
+    }
 
 }
