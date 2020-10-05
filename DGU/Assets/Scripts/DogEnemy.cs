@@ -26,17 +26,20 @@ public class DogEnemy : MonoBehaviour
     private bool isPlayerDead = false;
     public float enemyHP = 2;
 
+    private Vector3 startPos;
+
     bool isDamaged = false;
     float lastTimeDamaged = 0;
     private Vector3 respawnPos;
     private PlayerStats playerStats;
-    private float enemyMaxHP = 2;
+    private float enemyMaxHP = 4;
     private float currentTime;
     public Vector3 deathPoint;
     private bool isDead = false;
 
     private void Awake()
     {
+        startPos = transform.position;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("MiddleOfThePlayer").GetComponent<Transform>();
@@ -74,7 +77,6 @@ public class DogEnemy : MonoBehaviour
         }
         if (!isDamaged)
         {
-            
             rbx.velocity = new Vector2(horizontal * moveSpeed * Time.deltaTime, rbx.velocity.y);
             if (horizontal > 0 && facingRight || horizontal < 0 && !facingRight)
             {
@@ -107,17 +109,21 @@ public class DogEnemy : MonoBehaviour
 
     private void FindTarget()
     {
-        if (Vector2.Distance(transform.position, target.transform.position) < targetRange)
+        if(!playerStats.isDead)
         {
-            Debug.Log(Vector2.Distance(transform.position, target.transform.position));
-            Debug.Log(targetRange);
-            MoveTowardsPlayer();
+            if (Vector2.Distance(transform.position, target.transform.position) < targetRange)
+            {
+                Debug.Log(Vector2.Distance(transform.position, target.transform.position));
+                Debug.Log(targetRange);
+                MoveTowardsPlayer();
+            }
+            else
+            {
+                horizontal = 0;
+                anim.Play("DogEnemyIdle");
+            }
         }
-        else
-        {
-            horizontal = 0;
-            anim.Play("DogEnemyIdle");
-        }
+        
     }
 
     private void Attack()
@@ -203,12 +209,8 @@ public class DogEnemy : MonoBehaviour
 
     private void Respawn()
     {
-        if(isDead)
-        {
-            isDead = false;
             transform.position = respawnPos;
             enemyHP = enemyMaxHP;
-        }
        
     }
 }

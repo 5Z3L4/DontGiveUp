@@ -123,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (PlayerStats.souls >= 1)
         {
-            jumpForce += 1;
+            jumpForce += 0.1f;
             PlayerStats.souls -= 1;
         }
        

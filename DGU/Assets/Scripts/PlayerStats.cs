@@ -8,6 +8,7 @@ public class PlayerStats : MonoBehaviour
     Transform spawnposition;
 
     public int maxHealth = 1;
+    private bool isDeadBySpikes = false;
     public int healthPoints = 1;
     private Animator anim;
     public bool isDead = false;
@@ -15,6 +16,7 @@ public class PlayerStats : MonoBehaviour
 
     private void Awake()
     {
+        Object.DontDestroyOnLoad(gameObject);
         anim = GetComponent<Animator>();
     }
     private void Update()
@@ -26,34 +28,53 @@ public class PlayerStats : MonoBehaviour
             SoundManager.PlaySound(SoundManager.Sound.PlayerDie);
             anim.Play("PlayerDeath");
         }
-        if(isDead)
-        {
-            if(Input.GetKeyDown(KeyCode.R))
-            {
-                anim.Play("PlayerResurection");
-                isDead = false;
-                healthPoints = maxHealth;
-            }
-        }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Spieks"))
         {
+            isDeadBySpikes = true;
             healthPoints = 0;
-            transform.position = spawnposition.position;
+
         }
     }
-
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Spieks"))
+        {
+            isDeadBySpikes = false;
+        }
+    }
     public void AddHealth()
     {
-        if(PlayerStats.souls>=1)
+        if(PlayerStats.souls>0)
         {
             maxHealth++;
             healthPoints = maxHealth;
             PlayerStats.souls -= 1;
         }
         
+    }
+
+    public void Resurrect()
+    {
+        if(!isDeadBySpikes && PlayerStats.souls >0)
+        {
+            healthPoints = maxHealth;
+            isDead = false;
+            anim.Play("PlayerResurection");
+            PlayerStats.souls -= 1;
+        }
+    }
+
+    public void ResurrectAtSpawn()
+    {
+        healthPoints = maxHealth;
+        transform.position = spawnposition.position;
+        isDead = false;
+        anim.Play("PlayerResurection");
+
     }
 
 }
