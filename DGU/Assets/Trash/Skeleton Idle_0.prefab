@@ -46,6 +46,8 @@ GameObject:
   - component: {fileID: 1968375103886886044}
   - component: {fileID: 1968375103886886045}
   - component: {fileID: 1968375103886886019}
+  - component: {fileID: 1021620056}
+  - component: {fileID: 1021620057}
   m_Layer: 8
   m_Name: Skeleton Idle_0
   m_TagString: Player
@@ -106,7 +108,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1946371425
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 7928858964255100155, guid: eae5d1f2bdd3ae748b93720086893c84,
     type: 3}
@@ -139,7 +141,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: dd39c43f99f5b3d4e8a2ddbfabb6d5c6, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &1968375103886886046
 CapsuleCollider2D:
@@ -164,7 +166,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968375103886886043}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a82420df1ac4a941a9d7f6975eb97f5, type: 3}
   m_Name: 
@@ -176,8 +178,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 512
-  jumpForce: 8
-  fallMultiplier: 10
+  jumpForce: 8.5
+  fallMultiplier: 8
   lowJumpMultiplier: 5
   playerRB: {fileID: 0}
   playerStats: {fileID: 1968375103886886045}
@@ -188,7 +190,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968375103886886043}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fb36716c1c18384b9217db168483b98, type: 3}
   m_Name: 
@@ -213,6 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8bb337076884c342982fba4426e110d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnposition: {fileID: 0}
   maxHealth: 1
   healthPoints: 1
   isDead: 0
@@ -235,6 +238,54 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1021620056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968375103886886043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 018f14d8e95ca6f408ae4c83f31c1900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 0}
+  playerAttack: {fileID: 0}
+  dialogue:
+    name: xxxxxx
+    sentences:
+    - Imagine, being in final stage. Defending boss would be awesome, maybe even Player
+      would remember us!
+    - Imagine being a boss!
+    - That's impossible.
+    - Not really, i'll become boss for sure!
+    - HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAH
+    - What's so funny?
+    - 'You? The boss? Hahahaha. Not gonna happen, you have only 1 HP and 1 damage.
+      Also to became boss you will have to defeat all monsters, and even the boss. '
+    - Doesn't matter!
+    - You are too weak! Better give up.
+    - 'I won''t give up! I''ll do it! '
+    - Hahaha good luck!
+    - '...'
+--- !u!114 &1021620057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968375103886886043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d47d7b559162c4284f14c4d936b826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOjbect: {fileID: 0}
+  dialgoueText: {fileID: 0}
+  enemyImage: {fileID: 0}
+  playerImage: {fileID: 0}
+  cutScene: {fileID: 1021620056}
 --- !u!1 &1968375104126518028
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,7 +46,7 @@ public class PlayerAttack : MonoBehaviour
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
                 for (int i = 0; i < enemiesToDamage.Length; i++)
                 {
-                    if(enemiesToDamage[i].name=="DogEnemy")
+                    if(enemiesToDamage[i].tag=="DogEnemy")
                     {
                         enemiesToDamage[i].GetComponent<DogEnemy>().GetDamage(damage);
                     }

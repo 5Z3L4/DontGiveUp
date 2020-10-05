@@ -47,9 +47,12 @@ public class DogEnemy : MonoBehaviour
 
     private void Update()
     {
-        FindTarget();
-        Move(horizontal, rb);
-        Attack();
+        if(enemyHP > 0)
+        {
+            FindTarget();
+            Move(horizontal, rb);
+            Attack();
+        }
         if (playerStats.isDead)
         {
             Respawn();

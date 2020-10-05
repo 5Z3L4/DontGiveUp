@@ -40,8 +40,11 @@ public class Enemy : MonoBehaviour
         {
             Respawn();
         }
-        Attack();
-        Move();
+        if(enemyHP > 0)
+        {
+            Attack();
+            Move();
+        }
         Die();
         currentDistance = Mathf.Abs(Mathf.Abs(target.transform.position.x) - Mathf.Abs(transform.position.x));
     }
