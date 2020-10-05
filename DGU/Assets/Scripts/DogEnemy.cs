@@ -24,13 +24,13 @@ public class DogEnemy : MonoBehaviour
     public float attackRange;
     public float damage;
     private bool isPlayerDead = false;
-    public float enemyHP = 4;
+    public float enemyHP = 2;
 
     bool isDamaged = false;
     float lastTimeDamaged = 0;
     private Vector3 respawnPos;
     private PlayerStats playerStats;
-    private float enemyMaxHP = 4;
+    private float enemyMaxHP = 2;
     private float currentTime;
     public Vector3 deathPoint;
     private bool isDead = false;
@@ -176,12 +176,16 @@ public class DogEnemy : MonoBehaviour
     {
         if (enemyHP <= 0)
         {
-            isDead = true;
+            if(!isDead)
+            {
+                PlayerStats.souls += 1;
+                isDead = true;
+
+            }
             float deathTimer = 0.3f;
             if (currentTime + deathTimer < Time.time)
             {
                 transform.position = deathPoint;
-
             }
         }
     }

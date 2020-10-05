@@ -19,6 +19,7 @@ public class PlayerStats : MonoBehaviour
     }
     private void Update()
     {
+        Debug.Log(souls);
         if (healthPoints <=0 && !isDead)
         {
             isDead = true;
@@ -46,8 +47,13 @@ public class PlayerStats : MonoBehaviour
 
     public void AddHealth()
     {
-        maxHealth++;
-        healthPoints = maxHealth;
+        if(PlayerStats.souls>=1)
+        {
+            maxHealth++;
+            healthPoints = maxHealth;
+            PlayerStats.souls -= 1;
+        }
+        
     }
 
 }

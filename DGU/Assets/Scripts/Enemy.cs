@@ -62,15 +62,18 @@ public class Enemy : MonoBehaviour
     {
         if (enemyHP <=0)
         {
-            //Respawn();
-            //Destroy(gameObject, 0.3f);
-            isDead = true;
+            if(!isDead)
+            {
+                PlayerStats.souls += 2;
+                isDead = true;
+            }
             float deathTimer = 0.3f;
-            if(currentTime + deathTimer < Time.time)
+            if (currentTime + deathTimer < Time.time)
             {
                 transform.position = deathPoint;
-                PlayerStats.souls += 2;
+
             }
+
         }
     }
     public void Move()

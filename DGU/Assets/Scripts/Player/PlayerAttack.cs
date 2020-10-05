@@ -65,7 +65,12 @@ public class PlayerAttack : MonoBehaviour
     }
     public void AddDamage()
     {
-        damage++;
+        if(PlayerStats.souls >=1)
+        {
+            damage++;
+            PlayerStats.souls -= 1;
+        }
+        
     }
     public void AddRange()
     {

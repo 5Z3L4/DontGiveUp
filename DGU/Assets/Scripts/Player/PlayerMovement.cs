@@ -111,12 +111,22 @@ public class PlayerMovement : MonoBehaviour
     
     public void AddMoveSpeed()
     {
-        moveSpeed += 10;
+        if(PlayerStats.souls >=1)
+        {
+            moveSpeed += 10;
+            PlayerStats.souls -= 1;
+        }
+        
     }
     
     public void AddJumpForce()
     {
-        jumpForce += 1;
+        if (PlayerStats.souls >= 1)
+        {
+            jumpForce += 1;
+            PlayerStats.souls -= 1;
+        }
+       
     }
 
 }
