@@ -33,6 +33,7 @@ public class DogEnemy : MonoBehaviour
     private float enemyMaxHP = 4;
     private float currentTime;
     public Vector3 deathPoint;
+    private bool isDead = false;
 
     private void Awake()
     {
@@ -175,6 +176,7 @@ public class DogEnemy : MonoBehaviour
     {
         if (enemyHP <= 0)
         {
+            isDead = true;
             float deathTimer = 0.3f;
             if (currentTime + deathTimer < Time.time)
             {
@@ -194,7 +196,12 @@ public class DogEnemy : MonoBehaviour
 
     private void Respawn()
     {
-        transform.position = respawnPos;
-        enemyHP = enemyMaxHP;
+        if(isDead)
+        {
+            isDead = false;
+            transform.position = respawnPos;
+            enemyHP = enemyMaxHP;
+        }
+       
     }
 }

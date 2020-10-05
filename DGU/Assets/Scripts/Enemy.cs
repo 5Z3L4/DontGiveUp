@@ -24,6 +24,9 @@ public class Enemy : MonoBehaviour
     public Vector3 deathPoint;
     private PlayerStats playerStats;
     float currentTime;
+
+    public bool shouldIRespawn = true;
+    private bool isDead = false;
     private void Awake()
     {
         target = GameObject.FindGameObjectWithTag("MiddleOfThePlayer").GetComponent<Transform>();
@@ -61,6 +64,7 @@ public class Enemy : MonoBehaviour
         {
             //Respawn();
             //Destroy(gameObject, 0.3f);
+            isDead = true;
             float deathTimer = 0.3f;
             if(currentTime + deathTimer < Time.time)
             {
@@ -131,7 +135,11 @@ public class Enemy : MonoBehaviour
 
     private void Respawn()
     {
-        transform.position = respawnPos;
-        enemyHP = enemyMaxHP;
+        if(shouldIRespawn && isDead)
+        {
+            isDead = false;
+            transform.position = respawnPos;
+            enemyHP = enemyMaxHP;
+        } 
     }
 }

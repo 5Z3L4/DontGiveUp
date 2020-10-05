@@ -1571,11 +1571,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5327202032497359985, guid: 3e63227cfd443934684e1f788258bfe4,
-        type: 3}
-      propertyPath: moveSpeed
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e63227cfd443934684e1f788258bfe4, type: 3}
 --- !u!114 &613632410 stripped
@@ -1681,6 +1676,11 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyHP
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653009012678533102, guid: 1b60766d774ee074caa1f2a0458d8556,
+        type: 3}
+      propertyPath: shouldIRespawn
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b60766d774ee074caa1f2a0458d8556, type: 3}
