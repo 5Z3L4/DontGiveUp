@@ -28,12 +28,20 @@ public class DogEnemy : MonoBehaviour
 
     bool isDamaged = false;
     float lastTimeDamaged = 0;
+    private Vector3 respawnPos;
+    private PlayerStats playerStats;
+    private float enemyMaxHP = 4;
+    private float currentTime;
+    public Vector3 deathPoint;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("MiddleOfThePlayer").GetComponent<Transform>();
+        respawnPos = transform.position;
+        playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+
     }
 
     private void Update()
@@ -41,6 +49,11 @@ public class DogEnemy : MonoBehaviour
         FindTarget();
         Move(horizontal, rb);
         Attack();
+        if (playerStats.isDead)
+        {
+            Respawn();
+        }
+        Die();
         currentDistance = Mathf.Abs(Mathf.Abs(target.transform.position.x) - Mathf.Abs(transform.position.x));
     }
 
@@ -92,7 +105,14 @@ public class DogEnemy : MonoBehaviour
     {
         if (Vector2.Distance(transform.position, target.transform.position) < targetRange)
         {
+            Debug.Log(Vector2.Distance(transform.position, target.transform.position));
+            Debug.Log(targetRange);
             MoveTowardsPlayer();
+        }
+        else
+        {
+            horizontal = 0;
+            anim.Play("DogEnemyIdle");
         }
     }
 
@@ -143,15 +163,24 @@ public class DogEnemy : MonoBehaviour
         anim.Play("DogEnemyHit");
         isDamaged = true;
         lastTimeDamaged = Time.time;
-        Die();
+        if (enemyHP <= 0)
+        {
+            currentTime = Time.time;
+            SoundManager.PlaySound(SoundManager.Sound.EnemyDie, attackPos.transform.position);
+        }
+
     }
 
     public void Die()
     {
         if (enemyHP <= 0)
         {
-            SoundManager.PlaySound(SoundManager.Sound.EnemyDie, attackPos.transform.position);
-            Destroy(gameObject, 0.3f);
+            float deathTimer = 0.3f;
+            if (currentTime + deathTimer < Time.time)
+            {
+                transform.position = deathPoint;
+
+            }
         }
     }
 
@@ -163,5 +192,9 @@ public class DogEnemy : MonoBehaviour
         }
     }
 
-
+    private void Respawn()
+    {
+        transform.position = respawnPos;
+        enemyHP = enemyMaxHP;
+    }
 }

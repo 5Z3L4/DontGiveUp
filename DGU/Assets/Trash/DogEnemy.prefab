@@ -151,7 +151,7 @@ MonoBehaviour:
   facingRight: 1
   moveSpeed: 200
   horizontal: 0
-  stopDistance: 0.5
+  stopDistance: 1
   targetRange: 5
   startTimeBtwAttack: 0.5
   attackPos: {fileID: 5327202032705861939}
@@ -160,6 +160,7 @@ MonoBehaviour:
     m_Bits: 256
   attackRange: 0.56
   damage: 1
+  deathPoint: {x: -58.28172, y: -53.13, z: 0}
 --- !u!50 &5327202032497359984
 Rigidbody2D:
   serializedVersion: 4
