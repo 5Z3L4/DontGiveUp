@@ -63,5 +63,12 @@ public class PlayerAttack : MonoBehaviour
         }
 
     }
-
+    public void AddDamage()
+    {
+        damage++;
+    }
+    public void AddRange()
+    {
+        attackRange += 0.25f;
+    }
 }

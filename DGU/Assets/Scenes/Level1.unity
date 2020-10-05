@@ -1817,6 +1817,16 @@ PrefabInstance:
       propertyPath: m_ScreenY
       value: 0.573
       objectReference: {fileID: 0}
+    - target: {fileID: 7256501356582951644, guid: 0add9ed8cd441d8419bb955dd4c128cd,
+        type: 3}
+      propertyPath: m_DeadZoneWidth
+      value: 0.214
+      objectReference: {fileID: 0}
+    - target: {fileID: 7256501356582951644, guid: 0add9ed8cd441d8419bb955dd4c128cd,
+        type: 3}
+      propertyPath: m_BiasX
+      value: 0.00000040616453
+      objectReference: {fileID: 0}
     - target: {fileID: 7256501357928121808, guid: 0add9ed8cd441d8419bb955dd4c128cd,
         type: 3}
       propertyPath: m_IsActive

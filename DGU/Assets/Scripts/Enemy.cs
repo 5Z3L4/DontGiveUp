@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour
             if(currentTime + deathTimer < Time.time)
             {
                 transform.position = deathPoint;
-
+                PlayerStats.souls += 2;
             }
         }
     }

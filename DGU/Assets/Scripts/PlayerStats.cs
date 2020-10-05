@@ -11,6 +11,7 @@ public class PlayerStats : MonoBehaviour
     public int healthPoints = 1;
     private Animator anim;
     public bool isDead = false;
+    public static int souls;
 
     private void Awake()
     {
@@ -42,4 +43,11 @@ public class PlayerStats : MonoBehaviour
             transform.position = spawnposition.position;
         }
     }
+
+    public void AddHealth()
+    {
+        maxHealth++;
+        healthPoints = maxHealth;
+    }
+
 }
