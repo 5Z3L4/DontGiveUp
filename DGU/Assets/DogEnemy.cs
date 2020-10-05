@@ -24,7 +24,7 @@ public class DogEnemy : MonoBehaviour
     public float attackRange;
     public float damage;
     private bool isPlayerDead = false;
-    private float enemyHP = 4;
+    public float enemyHP = 4;
 
     bool isDamaged = false;
     float lastTimeDamaged = 0;
