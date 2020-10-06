@@ -4,29 +4,42 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public Transform groundDetection;
+    private float currentDistance;
+    public float attackRangeX;
+    public float attackRangeY;
+    public Vector3 deathPoint;
+    float currentTime;
+    public bool shouldIRespawn = true;
+
+
     public float enemyMaxHP = 3;
     public float enemyHP = 3;
     public float speed;
     private bool movingRight = true;
-    public Transform groundDetection;
-    private float currentDistance;
-    private Transform target;
+    private float stopDistance = 1;
     public float timeBtwAttack;
     public float startTimeBtwAttack;
-    private float stopDistance =1;
+    private PlayerStats playerStats;
     public Transform attackPos;
     public LayerMask whatIsEnemies;
-    public float attackRangeX;
-    public float attackRangeY;
+    private Transform target;
     bool isPlayerDead = false;
     public Animator anim;
     private Vector3 respawnPos;
-    public Vector3 deathPoint;
-    private PlayerStats playerStats;
-    float currentTime;
-
-    public bool shouldIRespawn = true;
     private bool isDead = false;
+
+
+
+
+
+
+
+    
+    
+    
+
+    
     private void Awake()
     {
         target = GameObject.FindGameObjectWithTag("MiddleOfThePlayer").GetComponent<Transform>();

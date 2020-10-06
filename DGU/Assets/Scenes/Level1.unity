@@ -3040,7 +3040,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 84.795006, y: 0}
@@ -41633,16 +41633,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1142799533495717884, guid: 485739ee8534b0a4da1b1fa1c9f691db,
-        type: 3}
-      propertyPath: m_Name
-      value: SceneManagement
-      objectReference: {fileID: 0}
     - target: {fileID: 1142799533495717882, guid: 485739ee8534b0a4da1b1fa1c9f691db,
         type: 3}
       propertyPath: pauseUI
       value: 
       objectReference: {fileID: 241140825}
+    - target: {fileID: 1142799533495717884, guid: 485739ee8534b0a4da1b1fa1c9f691db,
+        type: 3}
+      propertyPath: m_Name
+      value: SceneManagement
+      objectReference: {fileID: 0}
     - target: {fileID: 1142799533495717885, guid: 485739ee8534b0a4da1b1fa1c9f691db,
         type: 3}
       propertyPath: m_LocalPosition.x

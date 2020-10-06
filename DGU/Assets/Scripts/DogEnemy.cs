@@ -5,41 +5,47 @@ using UnityEngine;
 
 public class DogEnemy : MonoBehaviour
 {
-    
-    public bool facingRight = false;
+    private float enemyMaxHP = 4;
+    public float enemyHP = 2;
     public float moveSpeed = 8;
+    public bool facingRight = false;
+    public float stopDistance = 0.5f;
+    private float timeBtwAttack;
+    public float startTimeBtwAttack;
+    private PlayerStats playerStats;
+    private Transform target;
+    private bool isPlayerDead = false;
+    private Animator anim;
+    private Vector3 respawnPos;
+    public Vector3 deathPoint;
+    private bool isDead = false;
+    public LayerMask whatIsEnemies;
 
     public float horizontal = 0;
-    public float stopDistance = 0.5f;
+    
     public float targetRange = 10f;
     private float currentDistance;
     private Rigidbody2D rb;
-    private Transform target;
-    private Animator anim;
+    
 
-    private float timeBtwAttack;
-    public float startTimeBtwAttack;
+    
     public Transform attackPos;
-    public LayerMask whatIsEnemies;
+    
     public float attackRange;
     public float damage;
-    private bool isPlayerDead = false;
-    public float enemyHP = 2;
-
-    private Vector3 startPos;
+    
+    
 
     bool isDamaged = false;
     float lastTimeDamaged = 0;
-    private Vector3 respawnPos;
-    private PlayerStats playerStats;
-    private float enemyMaxHP = 4;
+    
+    
+    
     private float currentTime;
-    public Vector3 deathPoint;
-    private bool isDead = false;
+    
 
     private void Awake()
     {
-        startPos = transform.position;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("MiddleOfThePlayer").GetComponent<Transform>();
