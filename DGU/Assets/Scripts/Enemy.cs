@@ -4,69 +4,65 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public Transform groundDetection;
-    private float currentDistance;
-    public float attackRangeX;
-    public float attackRangeY;
-    public Vector3 deathPoint;
-    float currentTime;
-    public bool shouldIRespawn = true;
+    [Header("Stats")]
+    [SerializeField]
+    private float enemyMaxHP = 3;
+    [SerializeField]
+    private float enemyHP = 3;
+    [SerializeField]
+    private int enemyDamage = 1;
+    [SerializeField]
+    private int soulCount;
 
+    [Header("Movement")]
+    [SerializeField]
+    protected float speed;
+    [SerializeField]
+    protected float stopDistance = 1;
+    [SerializeField]
+    protected bool movingRight = true;
 
-    public float enemyMaxHP = 3;
-    public float enemyHP = 3;
-    public float speed;
-    private bool movingRight = true;
-    private float stopDistance = 1;
-    public float timeBtwAttack;
-    public float startTimeBtwAttack;
-    private PlayerStats playerStats;
+    [Header("Attack")]
+    [SerializeField]
+    private float timeBtwAttack;
+    [SerializeField]
+    private float startTimeBtwAttack;
+    [SerializeField]
+    protected LayerMask whatIsEnemies;
+
+    [Header("Spawn")]
+    [SerializeField]
+    private Vector3 deathPoint;
+    [SerializeField]
+    private bool shouldIRespawn = true;
+    
+    [Header("Others")]
+    [SerializeField]
+    protected string animName;
     public Transform attackPos;
-    public LayerMask whatIsEnemies;
-    private Transform target;
-    bool isPlayerDead = false;
     public Animator anim;
+
+    protected float currentDistance; // current distance between enemy and player
+    protected bool isPlayerDead = false;
+    protected bool isDead = false;
+    private float currentTime;
+    private Transform target; // player
+    private PlayerStats playerStats;
     private Vector3 respawnPos;
-    private bool isDead = false;
 
-
-
-
-
-
-
-    
-    
-    
-
-    
     private void Awake()
     {
         target = GameObject.FindGameObjectWithTag("MiddleOfThePlayer").GetComponent<Transform>();
         respawnPos = transform.position;
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        if(playerStats.isDead)
-        {
-            Respawn();
-        }
-        if(enemyHP > 0)
-        {
-            Attack();
-            Move();
-        }
-        Die();
-        currentDistance = Mathf.Abs(Mathf.Abs(target.transform.position.x) - Mathf.Abs(transform.position.x));
+        deathPoint = GameObject.FindGameObjectWithTag("DeadBox").GetComponent<Transform>().transform.position;
     }
 
-    public void GetDamage(float damage)
+    public void GetDamage(float damage, string deathAnimName)
     {
         enemyHP -= damage;
         SoundManager.PlaySound(SoundManager.Sound.EnemyHit, attackPos.transform.position);
-        anim.Play("SnakeHit");
+        anim.Play(deathAnimName);
         if (enemyHP <= 0)
         {
             currentTime = Time.time;
@@ -74,50 +70,30 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Die()
+    protected void Die()
     {
         if (enemyHP <=0)
         {
             if(!isDead)
             {
-                PlayerStats.souls += 2;
+                PlayerStats.souls += soulCount;
                 isDead = true;
             }
             float deathTimer = 0.3f;
             if (currentTime + deathTimer < Time.time)
             {
                 transform.position = deathPoint;
-
             }
 
         }
-    }
-    public void Move()
-    {
-        if (currentDistance >= stopDistance || isPlayerDead)
+        if (playerStats.isDead)
         {
-            transform.Translate(Vector2.right * speed * Time.deltaTime);
-            RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, 2f);
-            if (groundInfo.collider == false)
-            {
-                if (movingRight == true)
-                {
-                    transform.eulerAngles = new Vector3(0, -180, 0);
-                    movingRight = false;
-                }
-                else
-                {
-                    transform.eulerAngles = new Vector3(0, 0, 0);
-                    movingRight = true;
-                }
-            }
+            Respawn(shouldIRespawn);
         }
-        
     }
-
-    private void Attack()
+   
+    protected void Attack(Collider2D[] enemiesToDamage, string animName)
     {
-        Collider2D[] enemiesToDamage = Physics2D.OverlapBoxAll(attackPos.position, new Vector2(attackRangeX, attackRangeY), 0, whatIsEnemies);
         for (int i = 0; i < enemiesToDamage.Length; i++)
         {
             isPlayerDead = enemiesToDamage[i].GetComponent<PlayerStats>().isDead;
@@ -134,9 +110,9 @@ public class Enemy : MonoBehaviour
                 {
                     if (!isPlayerDead)
                     {
-                        enemiesToDamage[i].GetComponent<PlayerStats>().healthPoints -= 1;
+                        enemiesToDamage[i].GetComponent<PlayerStats>().healthPoints -= enemyDamage;
                         Debug.Log(enemiesToDamage[i].GetComponent<PlayerStats>().healthPoints);
-                        anim.Play("SnakeAttack");
+                        anim.Play(animName);
                     }
                 }
             }
@@ -146,13 +122,8 @@ public class Enemy : MonoBehaviour
             timeBtwAttack -= Time.deltaTime;
         }
     }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(attackPos.position, new Vector3(attackRangeX, attackRangeY, 1));
-    }
-
-    private void Respawn()
+    
+    protected void Respawn(bool shouldIRespawn)
     {
         if(shouldIRespawn && isDead)
         {
@@ -160,5 +131,10 @@ public class Enemy : MonoBehaviour
             transform.position = respawnPos;
             enemyHP = enemyMaxHP;
         } 
+    }
+
+    protected void CheckDistance()
+    {
+        currentDistance = Mathf.Abs(Mathf.Abs(target.transform.position.x) - Mathf.Abs(transform.position.x));
     }
 }

@@ -20,11 +20,13 @@ public class DogEnemy : MonoBehaviour
     public Vector3 deathPoint;
     private bool isDead = false;
     public LayerMask whatIsEnemies;
+    private float currentDistance;
+    private float currentTime;
 
     public float horizontal = 0;
     
     public float targetRange = 10f;
-    private float currentDistance;
+    
     private Rigidbody2D rb;
     
 
@@ -41,7 +43,7 @@ public class DogEnemy : MonoBehaviour
     
     
     
-    private float currentTime;
+    
     
 
     private void Awake()
@@ -59,15 +61,22 @@ public class DogEnemy : MonoBehaviour
         if(enemyHP > 0)
         {
             FindTarget();
-            Move(horizontal, rb);
             Attack();
+        }
+        Die();
+        currentDistance = Mathf.Abs(Mathf.Abs(target.transform.position.x) - Mathf.Abs(transform.position.x));
+    }
+
+    private void FixedUpdate()
+    {
+        if (enemyHP > 0)
+        {
+            Move(horizontal, rb);
         }
         if (playerStats.isDead)
         {
             Respawn();
         }
-        Die();
-        currentDistance = Mathf.Abs(Mathf.Abs(target.transform.position.x) - Mathf.Abs(transform.position.x));
     }
 
     public void Move(float horizontal, Rigidbody2D rbx)
@@ -83,7 +92,7 @@ public class DogEnemy : MonoBehaviour
         }
         if (!isDamaged)
         {
-            rbx.velocity = new Vector2(horizontal * moveSpeed * Time.deltaTime, rbx.velocity.y);
+            rbx.velocity = new Vector2(horizontal * moveSpeed * Time.fixedDeltaTime, rbx.velocity.y);
             if (horizontal > 0 && facingRight || horizontal < 0 && !facingRight)
             {
                 Flip();
@@ -119,8 +128,6 @@ public class DogEnemy : MonoBehaviour
         {
             if (Vector2.Distance(transform.position, target.transform.position) < targetRange)
             {
-                Debug.Log(Vector2.Distance(transform.position, target.transform.position));
-                Debug.Log(targetRange);
                 MoveTowardsPlayer();
             }
             else

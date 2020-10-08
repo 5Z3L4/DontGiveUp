@@ -12,6 +12,7 @@ TagManager:
   - Resp
   - Level1
   - Level2
+  - DeadBox
   layers:
   - Default
   - TransparentFX

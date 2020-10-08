@@ -21,7 +21,6 @@ public class PlayerStats : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(souls);
         if (healthPoints <=0 && !isDead)
         {
             isDead = true;

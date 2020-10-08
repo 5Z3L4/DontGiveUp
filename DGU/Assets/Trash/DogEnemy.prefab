@@ -148,20 +148,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 526b286f58cd6854ca59a13d3642f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  facingRight: 1
+  enemyHP: 4
   moveSpeed: 200
-  horizontal: 0
+  facingRight: 1
   stopDistance: 1
-  targetRange: 9
   startTimeBtwAttack: 0.5
-  attackPos: {fileID: 5327202032705861939}
+  deathPoint: {x: -58.28172, y: -53.13, z: 0}
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 256
+  horizontal: 0
+  targetRange: 9
+  attackPos: {fileID: 5327202032705861939}
   attackRange: 0.56
   damage: 1
-  enemyHP: 4
-  deathPoint: {x: -58.28172, y: -53.13, z: 0}
 --- !u!50 &5327202032497359984
 Rigidbody2D:
   serializedVersion: 4
@@ -181,7 +181,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: dd39c43f99f5b3d4e8a2ddbfabb6d5c6, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!58 &5327202032497359987
 CircleCollider2D:

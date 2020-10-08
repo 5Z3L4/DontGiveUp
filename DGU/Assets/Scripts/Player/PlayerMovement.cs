@@ -43,8 +43,16 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
         if (!playerStats.isDead)
         {
-            Move(horizontalAxis, playerRB, moveSpeed);
             Jump();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (!playerStats.isDead)
+        {
+            Move(horizontalAxis, playerRB, moveSpeed);
+
         }
         else
         {
@@ -91,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
             SoundManager.PlaySound(SoundManager.Sound.PlayerMove, groundCheck.transform.position);
         }
         
-        rb.velocity = new Vector2(horizontal * speed * Time.deltaTime, rb.velocity.y);
+        rb.velocity = new Vector2(horizontal * speed * Time.fixedDeltaTime, rb.velocity.y);
         if (horizontal > 0 && !facingRight || horizontal < 0 && facingRight)
         {
             Flip();

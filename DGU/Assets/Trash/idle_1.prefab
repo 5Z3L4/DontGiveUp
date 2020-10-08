@@ -9,10 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2653009012678533100}
-  - component: {fileID: 2653009012678533101}
-  - component: {fileID: 2653009012678533102}
   - component: {fileID: 2653009012678533103}
   - component: {fileID: 2653009012678533099}
+  - component: {fileID: 818785729}
   m_Layer: 10
   m_Name: idle_1
   m_TagString: Untagged
@@ -37,83 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2653009012678533101
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2653009012678533088}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1946371425
-  m_SortingLayer: 5
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 6084859605308855041, guid: 0442b955028fe5148b2efbda7dd636a0,
-    type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 2, y: 1.1875}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!114 &2653009012678533102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2653009012678533088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 597464c1e82237a41a02723e7ca5d5b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyMaxHP: 3
-  enemyHP: 3
-  speed: 2
-  groundDetection: {fileID: 2653009013788715002}
-  timeBtwAttack: 0.5
-  startTimeBtwAttack: 1
-  attackPos: {fileID: 2653009013543523281}
-  whatIsEnemies:
-    serializedVersion: 2
-    m_Bits: 256
-  attackRangeX: 2
-  attackRangeY: 0.5
-  anim: {fileID: 2653009013536150175}
-  deathPoint: {x: -58.28172, y: -53.13, z: 0}
-  shouldIRespawn: 1
 --- !u!61 &2653009012678533103
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -131,8 +53,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 1.1875}
-    newSize: {x: 2, y: 1.1875}
+    oldSize: {x: 4, y: 4}
+    newSize: {x: 4, y: 4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -161,6 +83,38 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &818785729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2653009012678533088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 366f511f2d73a87458531f7c17f9c3d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMaxHP: 3
+  enemyHP: 3
+  speed: 2
+  movingRight: 0
+  stopDistance: 1
+  timeBtwAttack: 0.5
+  startTimeBtwAttack: 1
+  attackPos: {fileID: 2653009013543523281}
+  whatIsEnemies:
+    serializedVersion: 2
+    m_Bits: 256
+  isPlayerDead: 0
+  anim: {fileID: 2653009013536150175}
+  currentDistance: 0
+  deathPoint: {x: 0, y: 0, z: 0}
+  shouldIRespawn: 1
+  animName: SnakeAttack
+  groundDetection: {fileID: 2653009013788715002}
+  attackRangeX: 1
+  attackRangeY: 0.5
 --- !u!1 &2653009013536150161
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +239,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2653009013543523282}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.14, y: -0.11, z: -24.608864}
+  m_LocalPosition: {x: 0.14, y: -0.03, z: -24.608864}
   m_LocalScale: {x: 0.64474535, y: 0.563063, z: 1}
   m_Children: []
   m_Father: {fileID: 2653009012678533100}

@@ -52,7 +52,7 @@ public class PlayerAttack : MonoBehaviour
                     }
                     else
                     {
-                        enemiesToDamage[i].GetComponent<Enemy>().GetDamage(damage);
+                        enemiesToDamage[i].GetComponent<SnakeEnemy>().GetDamage(damage, "SnakeHit");
                     }
                 }
             }
