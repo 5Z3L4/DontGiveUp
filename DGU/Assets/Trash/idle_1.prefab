@@ -97,21 +97,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyMaxHP: 3
   enemyHP: 3
+  enemyDamage: 1
+  soulCount: 2
   speed: 2
-  movingRight: 0
   stopDistance: 1
+  movingRight: 0
   timeBtwAttack: 0.5
   startTimeBtwAttack: 1
-  attackPos: {fileID: 2653009013543523281}
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 256
-  isPlayerDead: 0
-  anim: {fileID: 2653009013536150175}
-  currentDistance: 0
   deathPoint: {x: 0, y: 0, z: 0}
   shouldIRespawn: 1
   animName: SnakeAttack
+  attackPos: {fileID: 2653009013543523281}
+  anim: {fileID: 2653009013536150175}
   groundDetection: {fileID: 2653009013788715002}
   attackRangeX: 1
   attackRangeY: 0.5
