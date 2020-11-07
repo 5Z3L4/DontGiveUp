@@ -49,4 +49,13 @@ Here you can get legal copy of this game: https://5z3l4.itch.io/dont-give-up.
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a list of proposed features (and known issues).
+1. UI Fix
+   - Pause Menu
+   - Souls counter
+2. More Enemies!
+3. Boss fights
+4. Level Creator
+5. Collectibles and easter eggs
+6. More levels
+7. Save system
+8. More mechanics
