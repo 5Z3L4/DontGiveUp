@@ -1,8 +1,5 @@
 # DontGiveUp
 
-
-Pixel Perfect Camera
-
 <br />
 <p align="center">
   <a href="https://github.com/github_username/repo_name">
