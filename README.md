@@ -38,24 +38,22 @@ Pixel Perfect Camera
 
 ## Built With
 
-* [Unity 2019.2.8f1]()
-* []()
-* []()
+* [Unity 2019.2.8f1](https://unity3d.com/get-unity/download/archive)
 
 
-
-<!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple steps.
+Here you can get legal copy of this game: https://5z3l4.itch.io/dont-give-up.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-```sh
-npm install npm@latest -g
-```
+* Download the zip file that's appropriate for your operating system.
+* Double click the downloaded zip file. ...
+* Right click in the middle of your opened window and select Extract All.
+* Choose an installation location of your choice.
+* Run the a game from the folder you extracted it to!
+
+* You can also run this game by itch.io client!
 
 ### Installation
 
