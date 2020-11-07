@@ -1,6 +1,6 @@
 # DontGiveUp
 
-Unity 2019.2.8f1
+
 Pixel Perfect Camera
 
 <br />
@@ -14,21 +14,17 @@ Pixel Perfect Camera
   <p align="center">
     Game created for Wholesome Game Jam 2020 with theme: Don't Give Up!
     <br />
-    In this game you will control a little minion with big dreams! Difficulty level is changing based on your skills! You can complete this game as long as you wont give up!
+    In this game you will control a little minion with big dreams! Difficulty level is changing based on your skills! 
     <br />
-    <a href="https://github.com/5Z3L4/DontGiveUp"><strong>Explore the docs »</strong></a>
+    You can complete this game as long as you wont give up!
     <br />
     <br />
     <a href="https://5z3l4.itch.io/dont-give-up">View Demo</a>
 </p>
 
-
-
-<!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
-* [About the Project](#about-the-project)
-  * [Built With](#built-with)
+* [Built With](#built-with)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
@@ -40,20 +36,9 @@ Pixel Perfect Camera
 * [Acknowledgements](#acknowledgements)
 
 
+## Built With
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`
-
-
-### Built With
-
-* []()
+* [Unity 2019.2.8f1]()
 * []()
 * []()
 
