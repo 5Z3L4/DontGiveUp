@@ -1,5 +1,5 @@
 # DontGiveUp
-Game created for Wholesome Game Jam 2020
+
 Unity 2019.2.8f1
 Pixel Perfect Camera
 
@@ -12,7 +12,9 @@ Pixel Perfect Camera
   <h3 align="center">Don't Give Up!</h3>
 
   <p align="center">
-    YOUR_SHORT_DESCRIPTION
+    Game created for Wholesome Game Jam 2020 with theme: Don't Give Up!
+    <br />
+    In this game you will control a little minion with big dreams! Difficulty level is changing based on your skills! You can complete this game as long as you wont give up!
     <br />
     <a href="https://github.com/5Z3L4/DontGiveUp"><strong>Explore the docs »</strong></a>
     <br />
