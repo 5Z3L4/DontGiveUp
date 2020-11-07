@@ -47,28 +47,24 @@ Here you can get legal copy of this game: https://5z3l4.itch.io/dont-give-up.
 
 ### Prerequisites
 
-* Download the zip file that's appropriate for your operating system.
-* Double click the downloaded zip file. ...
-* Right click in the middle of your opened window and select Extract All.
-* Choose an installation location of your choice.
-* Run the a game from the folder you extracted it to!
+* 
+*  ...
+* 
+* 
+* 
 
-* You can also run this game by itch.io client!
+* 
 
 ### Installation
 
-1. Clone the repo
-```sh
-git clone https://github.com/github_username/repo_name.git
-```
-2. Install NPM packages
-```sh
-npm install
-```
+1. Download the zip file that's appropriate for your operating system.
+2. Double click the downloaded zip file.
+3. Right click in the middle of your opened window and select Extract All.
+4. Choose an installation location of your choice.
+5. Run the a game from the folder you extracted it to!
 
+<b>You can also run this game by itch.io client!<b/>
 
-
-<!-- USAGE EXAMPLES -->
 ## Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
