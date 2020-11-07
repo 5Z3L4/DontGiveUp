@@ -2,7 +2,7 @@
 
 <br />
 <p align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/5Z3L4/DontGiveUp">
     <img src="https://github.com/5Z3L4/DontGiveUp/blob/main/DGU/Assets/Graphic/CutScene/UnityIcon.png" alt="Logo" width="80" height="80">
   </a>
 
