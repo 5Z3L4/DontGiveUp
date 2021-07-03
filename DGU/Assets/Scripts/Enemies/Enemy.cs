@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
     private Vector3 deathPoint;
     [SerializeField]
     private bool shouldIRespawn = true;
-    
+
     [Header("Others")]
     [SerializeField]
     protected string animName;
@@ -72,9 +72,9 @@ public class Enemy : MonoBehaviour
 
     protected void Die()
     {
-        if (enemyHP <=0)
+        if (enemyHP <= 0)
         {
-            if(!isDead)
+            if (!isDead)
             {
                 PlayerStats.souls += soulCount;
                 isDead = true;
@@ -91,46 +91,46 @@ public class Enemy : MonoBehaviour
             Respawn(shouldIRespawn);
         }
     }
-   
-    protected void Attack(Collider2D[] enemiesToDamage, string animName)
+
+    public virtual void Attack(Collider2D[] enemiesToDamage, string animName)
     {
-        for (int i = 0; i < enemiesToDamage.Length; i++)
-        {
-            isPlayerDead = enemiesToDamage[i].GetComponent<PlayerStats>().isDead;
-        }
+        //for (int i = 0; i < enemiesToDamage.Length; i++)
+        //{
+        //    isPlayerDead = enemiesToDamage[i].GetComponent<PlayerStats>().isDead;
+        //}
 
-        if (timeBtwAttack <= 0)
-        {
+        //if (timeBtwAttack <= 0)
+        //{
 
-            if (currentDistance <= stopDistance && !isPlayerDead)
-            {
-                timeBtwAttack = startTimeBtwAttack;
-                
-                for (int i = 0; i < enemiesToDamage.Length; i++)
-                {
-                    if (!isPlayerDead)
-                    {
-                        enemiesToDamage[i].GetComponent<PlayerStats>().healthPoints -= enemyDamage;
-                        Debug.Log(enemiesToDamage[i].GetComponent<PlayerStats>().healthPoints);
-                        anim.Play(animName);
-                    }
-                }
-            }
-        }
-        else
-        {
-            timeBtwAttack -= Time.deltaTime;
-        }
+        //    if (currentDistance <= stopDistance && !isPlayerDead)
+        //    {
+        //        timeBtwAttack = startTimeBtwAttack;
+
+        //        for (int i = 0; i < enemiesToDamage.Length; i++)
+        //        {
+        //            if (!isPlayerDead)
+        //            {
+        //                enemiesToDamage[i].GetComponent<PlayerStats>().healthPoints -= enemyDamage;
+        //                Debug.Log(enemiesToDamage[i].GetComponent<PlayerStats>().healthPoints);
+        //                anim.Play(animName);
+        //            }
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    timeBtwAttack -= Time.deltaTime;
+        //}
     }
-    
+
     protected void Respawn(bool shouldIRespawn)
     {
-        if(shouldIRespawn && isDead)
+        if (shouldIRespawn && isDead)
         {
             isDead = false;
             transform.position = respawnPos;
             enemyHP = enemyMaxHP;
-        } 
+        }
     }
 
     protected void CheckDistance()
