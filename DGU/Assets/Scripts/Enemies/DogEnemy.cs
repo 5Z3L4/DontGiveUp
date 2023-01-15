@@ -180,7 +180,6 @@ public class DogEnemy : MonoBehaviour
     public void GetDamage(float damage)
     {
         enemyHP -= damage;
-        Debug.Log(enemyHP);
         
         SoundManager.PlaySound(SoundManager.Sound.EnemyHit, attackPos.transform.position);
         anim.Play("DogEnemyHit");

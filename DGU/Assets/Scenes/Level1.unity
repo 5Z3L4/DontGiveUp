@@ -1423,7 +1423,7 @@ PrefabInstance:
     - target: {fileID: 7527426843127322057, guid: 0c4b7b9f2fd352643ab5c7d5a2441b64,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.16900021
+      value: 0.24200022
       objectReference: {fileID: 0}
     - target: {fileID: 7527426843127322057, guid: 0c4b7b9f2fd352643ab5c7d5a2441b64,
         type: 3}
@@ -1473,7 +1473,7 @@ PrefabInstance:
     - target: {fileID: 7527426843127322056, guid: 0c4b7b9f2fd352643ab5c7d5a2441b64,
         type: 3}
       propertyPath: orthographic size
-      value: 6.5
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c4b7b9f2fd352643ab5c7d5a2441b64, type: 3}
@@ -1773,7 +1773,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &586057217
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2309,7 +2309,7 @@ PrefabInstance:
     - target: {fileID: 7256501357654526173, guid: 0add9ed8cd441d8419bb955dd4c128cd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.16900021
+      value: 0.24200022
       objectReference: {fileID: 0}
     - target: {fileID: 7256501357654526173, guid: 0add9ed8cd441d8419bb955dd4c128cd,
         type: 3}
@@ -2366,6 +2366,11 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 824110732}
+    - target: {fileID: 7256501357654526172, guid: 0add9ed8cd441d8419bb955dd4c128cd,
+        type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0add9ed8cd441d8419bb955dd4c128cd, type: 3}
 --- !u!1 &1023075251
@@ -3472,10 +3477,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -66066,6 +66071,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DecorationsBehind
       objectReference: {fileID: 0}
+    - target: {fileID: 1425206614, guid: f76dba0767a3b244a8cfc2699a7a1fc3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1253981735, guid: f76dba0767a3b244a8cfc2699a7a1fc3, type: 3}
       propertyPath: m_Tiles.Array.size
       value: 364
@@ -89745,12 +89754,30 @@ PrefabInstance:
     - target: {fileID: 7499758778235195759, guid: f76dba0767a3b244a8cfc2699a7a1fc3,
         type: 3}
       propertyPath: m_ChunkCullingBounds.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7499758778235195759, guid: f76dba0767a3b244a8cfc2699a7a1fc3,
         type: 3}
       propertyPath: m_ChunkCullingBounds.y
-      value: 0.5
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 187850175, guid: f76dba0767a3b244a8cfc2699a7a1fc3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7499758778214947101, guid: f76dba0767a3b244a8cfc2699a7a1fc3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7499758778235195749, guid: f76dba0767a3b244a8cfc2699a7a1fc3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 128004516, guid: f76dba0767a3b244a8cfc2699a7a1fc3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f76dba0767a3b244a8cfc2699a7a1fc3, type: 3}
@@ -90096,6 +90123,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: NextScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341622204007885223, guid: 86936346544f0a545adec5e2ff269ab1,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341622204007885223, guid: 86936346544f0a545adec5e2ff269ab1,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 5341622204007885223, guid: 86936346544f0a545adec5e2ff269ab1,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86936346544f0a545adec5e2ff269ab1, type: 3}
@@ -90609,16 +90651,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1142799533495717884, guid: 485739ee8534b0a4da1b1fa1c9f691db,
-        type: 3}
-      propertyPath: m_Name
-      value: SceneManagement
-      objectReference: {fileID: 0}
     - target: {fileID: 1142799533495717882, guid: 485739ee8534b0a4da1b1fa1c9f691db,
         type: 3}
       propertyPath: pauseUI
       value: 
       objectReference: {fileID: 241140825}
+    - target: {fileID: 1142799533495717884, guid: 485739ee8534b0a4da1b1fa1c9f691db,
+        type: 3}
+      propertyPath: m_Name
+      value: SceneManagement
+      objectReference: {fileID: 0}
     - target: {fileID: 1142799533495717885, guid: 485739ee8534b0a4da1b1fa1c9f691db,
         type: 3}
       propertyPath: m_LocalPosition.x
