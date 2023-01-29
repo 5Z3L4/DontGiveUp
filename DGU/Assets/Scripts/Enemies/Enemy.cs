@@ -94,33 +94,33 @@ public class Enemy : MonoBehaviour
 
     public virtual void Attack(Collider2D[] enemiesToDamage, string animName)
     {
-        //for (int i = 0; i < enemiesToDamage.Length; i++)
-        //{
-        //    isPlayerDead = enemiesToDamage[i].GetComponent<PlayerStats>().isDead;
-        //}
+        for (int i = 0; i < enemiesToDamage.Length; i++)
+        {
+            isPlayerDead = enemiesToDamage[i].GetComponent<PlayerStats>().isDead;
+        }
 
-        //if (timeBtwAttack <= 0)
-        //{
+        if (timeBtwAttack <= 0)
+        {
 
-        //    if (currentDistance <= stopDistance && !isPlayerDead)
-        //    {
-        //        timeBtwAttack = startTimeBtwAttack;
+            if (currentDistance <= stopDistance && !isPlayerDead)
+            {
+                timeBtwAttack = startTimeBtwAttack;
 
-        //        for (int i = 0; i < enemiesToDamage.Length; i++)
-        //        {
-        //            if (!isPlayerDead)
-        //            {
-        //                enemiesToDamage[i].GetComponent<PlayerStats>().healthPoints -= enemyDamage;
-        //                Debug.Log(enemiesToDamage[i].GetComponent<PlayerStats>().healthPoints);
-        //                anim.Play(animName);
-        //            }
-        //        }
-        //    }
-        //}
-        //else
-        //{
-        //    timeBtwAttack -= Time.deltaTime;
-        //}
+                for (int i = 0; i < enemiesToDamage.Length; i++)
+                {
+                    if (!isPlayerDead)
+                    {
+                        enemiesToDamage[i].GetComponent<PlayerStats>().healthPoints -= enemyDamage;
+                        Debug.Log(enemiesToDamage[i].GetComponent<PlayerStats>().healthPoints);
+                        anim.Play(animName);
+                    }
+                }
+            }
+        }
+        else
+        {
+            timeBtwAttack -= Time.deltaTime;
+        }
     }
 
     protected void Respawn(bool shouldIRespawn)

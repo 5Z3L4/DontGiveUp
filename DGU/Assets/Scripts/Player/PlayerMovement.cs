@@ -27,13 +27,13 @@ public class PlayerMovement : MonoBehaviour
     public PlayerStats playerStats;
     private void Awake()
     {
-        SoundManager.Initialize();
+        playerRB = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
     // Start is called before the first frame update
     void Start()
     {
-        playerRB = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        SoundManager.Initialize();
     }
 
     // Update is called once per frame
